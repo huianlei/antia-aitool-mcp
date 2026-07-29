@@ -31,14 +31,14 @@ gvm install go1.25.12
 ./scripts/setup.sh
 
 # Or manually:
-gvm use go1.22.12
+gvm use go1.25.12
 make install-deps
 make build
 ```
 
 ### Go Version Isolation
 
-This project uses **Go 1.22.12** isolated via gvm. Your global Go version (e.g., Go 1.16 for antia-server) remains unchanged.
+This project uses **Go 1.25.12** isolated via gvm. Your global Go version (e.g., Go 1.16 for antia-server) remains unchanged.
 
 **Project-level version file**: `.go-version` specifies `go1.25.12`
 

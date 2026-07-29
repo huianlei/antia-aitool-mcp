@@ -834,7 +834,7 @@ plugins/redis/
 ### 准备工作
 
 **环境要求**:
-- Go 1.21+ 
+- Go 1.25+ (项目使用 Go 1.25.12)
 - Git
 - 访问内网 Jenkins 2.204.1 服务器
 - Claude Desktop（用于测试 MCP 集成）

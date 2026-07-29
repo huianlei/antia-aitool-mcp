@@ -90,18 +90,30 @@ antia-aitool-mcp/
 ## ⚠️ 当前阻塞问题
 
 ### Go 版本过低
-- **当前版本**: Go 1.16.15
-- **要求版本**: Go 1.21+
+- **当前版本**: Go 1.16.15 (antia-server 使用)
+- **要求版本**: Go 1.25+ (项目使用 Go 1.25.12)
 - **影响**: 无法安装依赖包
 
-**解决方案**:
+**解决方案 - 使用 gvm 进行版本隔离**:
 ```bash
-# macOS
-brew upgrade go
+# 安装 gvm (如未安装)
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 
-# 或从官网下载
-# https://go.dev/dl/
+# 安装项目所需 Go 版本
+gvm install go1.25.12
+
+# 切换到项目目录并使用项目版本
+cd antia-aitool-mcp
+gvm use go1.25.12
+
+# 验证版本
+go version  # 应显示 go1.25.12
 ```
+
+**版本隔离说明**:
+- antia-server 继续使用 Go 1.16.15
+- antia-aitool-mcp 使用 Go 1.25.12
+- 通过 gvm 在不同项目间切换，互不影响
 
 ### 依赖未安装
 由于 Go 版本问题，以下依赖尚未安装：
