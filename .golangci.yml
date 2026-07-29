@@ -1,0 +1,123 @@
+# .golangci-lint 配置文件用于 golangci-lint v1.62.2
+# 参考: https://golangci-lint.run/usage/configuration/
+
+run:
+  timeout: 5m
+  tests: true
+  modules-download-mode: readonly
+
+output:
+  formats:
+    - format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
+  sort-results: true
+
+linters:
+  enable:
+    - errcheck      # 检查未检查的错误
+    - gosimple      # 简化代码
+    - govet         # 标准 go vet 检查
+    - ineffassign   # 检测无效的赋值
+    - staticcheck   # 高级静态分析
+    - unused        # 检测未使用的常量、变量、函数等
+    - gofmt         # 检查代码格式
+    - goimports     # 检查 import 排序
+    - misspell      # 拼写检查
+    - revive        # 替代 golint
+    - typecheck     # 类型检查
+    - gosec         # 安全检查
+    - gocritic      # 代码审查
+
+  disable:
+    - deadcode      # 已弃用
+    - varcheck      # 已弃用
+    - structcheck   # 已弃用
+    - scopelint     # 已弃用
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: false
+
+  govet:
+    enable-all: true
+    disable:
+      - shadow
+      - fieldalignment
+
+  gofmt:
+    simplify: true
+
+  goimports:
+    local-prefixes: github.com/huianlei/antia-aitool-mcp
+
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - performance
+      - style
+    disabled-checks:
+      - unnamedResult
+      - hugeParam
+
+  revive:
+    rules:
+      - name: blank-imports
+      - name: context-as-argument
+      - name: dot-imports
+      - name: error-return
+      - name: error-strings
+      - name: error-naming
+      - name: exported
+      - name: if-return
+      - name: increment-decrement
+      - name: var-naming
+      - name: var-declaration
+      - name: package-comments
+      - name: range
+      - name: receiver-naming
+      - name: time-naming
+      - name: unexported-return
+      - name: indent-error-flow
+      - name: errorf
+      - name: empty-block
+      - name: superfluous-else
+      - name: unused-parameter
+      - name: unreachable-code
+      - name: redefines-builtin-id
+
+  misspell:
+    locale: US
+
+  gosec:
+    excludes:
+      - G104 # 审计错误未检查
+      - G304 # 文件路径由变量提供
+
+issues:
+  exclude-rules:
+    # 排除测试文件的某些检查
+    - path: _test\.go
+      linters:
+        - gosec
+        - errcheck
+
+    # 排除生成的代码
+    - path: ".*\\.pb\\.go"
+      linters:
+        - all
+
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+  # 显示所有问题
+  exclude-use-default: false
+
+severity:
+  default-severity: warning
+  rules:
+    - linters:
+        - errcheck
+        - gosec
+      severity: error

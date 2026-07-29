@@ -1,0 +1,61 @@
+# Antia AI Tool MCP Server Configuration
+# Copy this file to config.yaml and update with your settings
+
+# Server configuration
+server:
+  # Mode: stdio (for Claude Desktop) or http (for testing)
+  mode: stdio
+
+  # HTTP server settings (only used if mode is http)
+  http:
+    enabled: false
+    host: "0.0.0.0"
+    port: 8080
+
+  # Logging configuration
+  log:
+    level: info        # debug | info | warn | error
+    format: json       # json | console
+    file: ""           # Log file path (empty = stderr)
+
+# Plugin configurations
+plugins:
+  # Jenkins Plugin - Phase 1
+  jenkins:
+    # Enable/disable this plugin
+    enabled: true
+
+    # Jenkins server URL
+    url: "http://jenkins.internal.company.com"
+
+    # Authentication (Basic Auth)
+    auth:
+      username: "admin"
+      # Use environment variable for password: export JENKINS_PASSWORD="your-password"
+      password: "${JENKINS_PASSWORD}"
+
+    # Plugin options
+    options:
+      timeout: 30s           # API request timeout
+      verify_ssl: false      # Set to false for self-signed certificates
+      max_retries: 3         # Number of retry attempts for failed requests
+      retry_delay: 2s        # Delay between retries
+
+  # Redis Plugin - Phase 2 (disabled for now)
+  redis:
+    enabled: false
+    host: "localhost"
+    port: 6379
+    password: "${REDIS_PASSWORD}"
+    db: 0
+    timeout: 5s
+
+  # Elasticsearch Plugin - Phase 2 (disabled for now)
+  elasticsearch:
+    enabled: false
+    urls:
+      - "http://es-node1:9200"
+      - "http://es-node2:9200"
+    username: "elastic"
+    password: "${ES_PASSWORD}"
+    timeout: 10s

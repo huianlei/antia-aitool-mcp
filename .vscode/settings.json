@@ -1,0 +1,108 @@
+{
+	// Go 扩展配置
+	"go.useLanguageServer": true,
+	"go.languageServerExperimentalFeatures": {
+		"diagnostics": true,
+		"documentLink": true
+	},
+	// Go 工具路径 - 显式指定 Go 1.25.12
+	"go.toolsManagement.autoUpdate": false,
+	"go.gopath": "/Users/admin/.gvm/pkgsets/go1.25.12/global",
+	"go.goroot": "/Users/admin/.gvm/gos/go1.25.12",
+	"go.alternateTools": {
+		"go": "/Users/admin/.gvm/gos/go1.25.12/bin/go",
+		"dlv": "/Users/admin/.gvm/pkgsets/go1.25.12/global/bin/dlv"
+	},
+	// 代码格式化
+	"go.formatTool": "goimports",
+	"go.formatFlags": [],
+	"[go]": {
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": "explicit"
+		},
+		"editor.defaultFormatter": "golang.go"
+	},
+	// Linter 配置
+	"go.lintTool": "golangci-lint",
+	"go.lintFlags": [
+		"--fast"
+	],
+	"go.lintOnSave": "workspace",
+	// 测试配置
+	"go.testFlags": [
+		"-v"
+	],
+	"go.testTimeout": "30s",
+	"go.coverOnSave": false,
+	"go.coverOnSingleTest": true,
+	"go.coverageDecorator": {
+		"type": "gutter"
+	},
+	// 构建配置
+	"go.buildOnSave": "off",
+	"go.buildFlags": [],
+	"go.buildTags": "",
+	// 调试配置
+	"go.delveConfig": {
+		"dlvLoadConfig": {
+			"followPointers": true,
+			"maxVariableRecurse": 1,
+			"maxStringLen": 256,
+			"maxArrayValues": 64,
+			"maxStructFields": -1
+		},
+		"apiVersion": 2,
+		"showGlobalVariables": false
+	},
+	// 代码补全
+	"go.autocompleteUnimportedPackages": true,
+	"go.gocodeAutoBuild": false,
+	// 文件排除（性能优化）
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/node_modules/*/**": true,
+		"**/.hg/store/**": true,
+		"**/vendor/**": true
+	},
+	// 文件关联
+	"files.associations": {
+		"*.yaml": "yaml",
+		"*.yml": "yaml",
+		"go.mod": "go.mod",
+		"go.sum": "go.sum"
+	},
+	// 编辑器设置
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.rulers": [
+		100,
+		120
+	],
+	"editor.wordWrap": "off",
+	// 文件末尾换行
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	// Git 配置
+	"git.ignoreLimitWarning": true,
+
+	// Terminal 配置 - 自动切换到 go1.25.12
+	"terminal.integrated.cwd": "${workspaceFolder}",
+	"terminal.integrated.env.osx": {
+		"GOROOT": "/Users/admin/.gvm/gos/go1.25.12",
+		"GOPATH": "/Users/admin/.gvm/pkgsets/go1.25.12/global",
+		"PATH": "/Users/admin/.gvm/gos/go1.25.12/bin:/Users/admin/.gvm/pkgsets/go1.25.12/global/bin:${env:PATH}"
+	},
+
+	// 搜索排除
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/vendor": true,
+		"**/.git": true,
+		"**/coverage.out": true,
+		"**/coverage.html": true
+	}
+}

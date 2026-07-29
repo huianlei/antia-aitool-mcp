@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go mod *)",
+      "Bash(go get *)",
+      "Bash(go version *)",
+      "Bash(chmod +x *)",
+      "Bash(make install-deps *)",
+      "Bash(make build *)",
+      "Bash(./antia-aitool-mcp version *)",
+      "Bash(./antia-aitool-mcp *)",
+      "Bash(bash scripts/test_single.sh)",
+      "Bash(gvm list *)",
+      "Bash(pkill *)",
+      "Bash(JENKINS_PASSWORD=\"hal@123\" ./antia-aitool-mcp --config configs/config.yaml)",
+      "Bash(xargs ls -lt)",
+      "Bash(JENKINS_PASSWORD=\"hal@123\" /Users/admin/projects/antia/antia-aitool-mcp/antia-aitool-mcp --config /Users/admin/projects/antia/antia-aitool-mcp/configs/config.yaml)",
+      "Bash(claude mcp *)",
+      "Bash(curl -c /tmp/jenkins-cookie -s -u hal:hal@123 http://10.7.71.6:8090/crumbIssuer/api/json)",
+      "Read(//tmp/**)",
+      "Bash(curl -b /tmp/jenkins-cookie -X POST -u hal:hal@123 -H 'Jenkins-Crumb: __TRACKED_VAR__' http://10.7.71.6:8090/job/test-demo/build -w '\\\\nHTTP Status: %{http_code}\\\\n')",
+      "Bash(curl -b /tmp/jenkins-cookie -X POST -u hal:hal@123 -H 'Jenkins-Crumb: __CMDSUB_OUTPUT__' 'http://10.7.71.6:8090/job/Common_NewBuild/buildWithParameters?Tag=test&BundleVersion=1.0' -w '\\\\nHTTP Status: %{http_code}\\\\n')",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}
